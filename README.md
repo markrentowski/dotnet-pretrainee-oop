@@ -1,2 +1,7 @@
-# dotnet-pretrainee-oop
-Object-Oriented Programming: Practical Task
+## Project description
+A C# console app for employee management
+
+## Employee types
+- Developer
+- Manager
+- Designer
