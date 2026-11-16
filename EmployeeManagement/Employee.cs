@@ -21,6 +21,11 @@ public abstract class Employee
         }
     }
 
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"ID: {Id}, Name: {Name}, Salary: {Salary:C}");
+    }
+
     public abstract void Work();
  
     public decimal ChangeSalary(decimal newSalary)
