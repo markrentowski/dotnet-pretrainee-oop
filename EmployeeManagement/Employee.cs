@@ -37,8 +37,10 @@ public abstract class Employee
         else
         {
             Salary = newSalary;
-            Console.WriteLine($"{Name}'s salary has been changed to {Salary:C}.");
+            SalaryChanged?.Invoke(this, EventArgs.Empty);
         }
         return Salary;
     }
+
+    public EventHandler SalaryChanged;
 }

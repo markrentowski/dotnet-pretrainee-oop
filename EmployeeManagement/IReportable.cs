@@ -1,4 +1,4 @@
 public interface IReportable
 {
-    void GenerateReport();
+    public void GenerateReport();
 }

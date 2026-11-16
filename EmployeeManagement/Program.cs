@@ -75,12 +75,17 @@ void ChangeEmployeeSalary(List<Employee> employees)
     if (int.TryParse(Console.ReadLine(), out int id))
     {
         var employee = employees.FirstOrDefault(e => e.Id == id);
+        employee.SalaryChanged += SalaryChangedHandler;
         if (employee != null)
         {
             Console.Write($"Enter new salary for {employee.Name}: ");
             if (decimal.TryParse(Console.ReadLine(), out decimal newSalary))
             {
                 employee.ChangeSalary(newSalary);
+                employee.SalaryChanged += (sender, e) =>
+                {
+                    Console.WriteLine($"Notification: {employee.Name}'s salary has been updated to {employee.Salary:C}.");
+                };
             }
             else
             {
@@ -95,6 +100,14 @@ void ChangeEmployeeSalary(List<Employee> employees)
     else
     {
         Console.WriteLine("Invalid ID input. Salary change aborted.");
+    }
+}
+
+void SalaryChangedHandler(object sender, EventArgs e)
+{
+    if (sender is Employee employee)
+    {
+        Console.WriteLine($"Notification: {employee.Name}'s salary has been updated to {employee.Salary:C}.");
     }
 }
 
